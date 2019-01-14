@@ -20,8 +20,8 @@ let startTime = new Date().getTime();
 window.onload = function () {
     ctx.fillStyle = "grey";
     ctx.fillRect(0, 0, cvs.width, cvs.height);
-    setDifficulty(difficulty);
     gameGrid = new Grid(gridSquareSize, gridSquareGap, selectedDifficultySettings.gridSize, selectedDifficultySettings.mines);
+    setDifficulty(difficulty);
     gameGrid.draw();
 
 
@@ -68,17 +68,19 @@ function flagTile(x, y) {
     } else {
         console.log("ERROR: Tried to flag uncovered tile: " + x, ", " + y);
     }
-    if(minesFlagged == selectedDifficultySettings.mines) {
+    if (minesFlagged == selectedDifficultySettings.mines) {
         let win = true;
         for (let i = 0; i < minesFlagged; i++) {
-            if(!gameGrid.arrayOfGridSquares[gameGrid.arrayOfMineLocations[i].gridX][gameGrid.arrayOfMineLocations[i].gridY].containsMine) {
+            if (!gameGrid.arrayOfGridSquares[gameGrid.arrayOfMineLocations[i].gridX][gameGrid.arrayOfMineLocations[i].gridY].containsMine) {
                 win = false;
                 break;
             }
         }
-        if(win) {
+        if (win) {
             document.getElementById("winMessage").innerText = "YOU WIN!!";
-        } else {document.getElementById("winMessage").innerText = "";}
+        } else {
+            document.getElementById("winMessage").innerText = "";
+        }
         paused = true;
     }
 }
@@ -156,8 +158,19 @@ class Grid {
         // place mines
         this.arrayOfMineLocations = [];
         for (let i = 0; i < this.numOfMines; i++) {
-            let x = Math.floor(Math.random() * this.gridWidth);
-            let y = Math.floor(Math.random() * this.gridWidth);
+            let mineIsDupe;
+            let x, y;
+            do {
+                x = Math.floor(Math.random() * this.gridWidth);
+                y = Math.floor(Math.random() * this.gridWidth);
+                mineIsDupe = false;
+                for (let j = 0; j < this.arrayOfMineLocations.length; j++) {
+                    if (x === this.arrayOfMineLocations[j].gridX && y === this.arrayOfMineLocations[j].gridY) {
+                        mineIsDupe = true;
+                    } else {
+                    }
+                }
+            } while (mineIsDupe);
             this.arrayOfMineLocations.push({gridX: x, gridY: y});
             this.arrayOfGridSquares[x][y].containsMine = true; // @TODO remove this
             this.arrayOfGridSquares[x][y].displayNumber = -1;
