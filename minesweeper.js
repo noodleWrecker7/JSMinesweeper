@@ -20,11 +20,10 @@ let startTime = new Date().getTime();
 window.onload = function () {
     ctx.fillStyle = "grey";
     ctx.fillRect(0, 0, cvs.width, cvs.height);
-
+    setDifficulty(difficulty);
     gameGrid = new Grid(gridSquareSize, gridSquareGap, selectedDifficultySettings.gridSize, selectedDifficultySettings.mines);
     gameGrid.draw();
-    setDifficulty(difficulty);
-    gameGrid.draw();
+
 
     cvs.addEventListener("contextmenu", function (evt) {
         evt.preventDefault();
