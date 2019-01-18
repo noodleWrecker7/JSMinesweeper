@@ -22,13 +22,7 @@ button:hover {
     border-bottom-left-radius: 0;
 }
 
-.canvasContainer {
-    width: inherit;
-    display: flex;
-    flex-flow: column nowrap;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 .score-info {
     padding: 10px;
