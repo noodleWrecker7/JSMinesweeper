@@ -6,8 +6,7 @@
     <!--<link rel="stylesheet" href="../css/index.css">-->
     <link rel="stylesheet" href="../../css/pages.css">
     <link rel="stylesheet" href="../../css/minesweeper.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-          integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/fontawesome.css">
     <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico"/>
     <!--Used from https://fontawesome.com under license https://fontawesome.com/license-->
     <title>Games - Minesweeper</title>
@@ -20,9 +19,7 @@
         <div class="links-bar">
             <a href="../../" class="nav-home nav-button">Home</a>
             <a href="../" class="nav-link nav-button">Projects</a>
-            <!--<a href="" class="nav-link nav-button">Blog</a>
-            <a href="" class="nav-link nav-button">Donate</a>
-            <a href="" class="nav-link nav-button">Contact</a>-->
+            <a href="https://paypal.me/noodlewrecker" class="nav-link nav-button">Donate</a>
         </div>
         <?php
         $socialBarResponse = file_get_contents("../../../hidden/social-bar.html");
