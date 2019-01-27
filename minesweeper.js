@@ -1,18 +1,18 @@
-var cvs = document.getElementById("gameCanvas");
-var ctx = cvs.getContext("2d");
+let cvs = document.getElementById("gameCanvas");
+let ctx = cvs.getContext("2d");
 
-var difficulty = 0;
-var difficulties = [
+let difficulty = 0;
+let difficulties = [
     {gridSize: 8, mines: 10},
     {gridSize: 16, mines: 40},
     {gridSize: 24, mines: 99}
 ];
 let selectedDifficultySettings = difficulties[difficulty];
 
-var minesFlagged = 0;
+let minesFlagged = 0;
 let gridSquareSize = 20;
 let gridSquareGap = 2;
-var gameGrid;
+let gameGrid;
 let flagImg = new Image();
 flagImg.src = "img/flag.png";
 let paused = false;
@@ -60,7 +60,7 @@ function gameOver() {
 
 function flagTile(x, y) {
     if (gameGrid.arrayOfGridSquares[x][y].coverStatus === "flagged") {
-        gameGrid.arrayOfGridSquares[x][y].coverStatus = "covered"
+        gameGrid.arrayOfGridSquares[x][y].coverStatus = "covered";
         minesFlagged--;
     } else if (gameGrid.arrayOfGridSquares[x][y].coverStatus === "covered") {
         gameGrid.arrayOfGridSquares[x][y].coverStatus = "flagged";
@@ -91,13 +91,12 @@ function uncoverTile(x, y) {
         gameGrid.draw();
         if (gameGrid.arrayOfGridSquares[x][y].displayNumber === -1) {
             gameOver();
-            return;
         }
     }
 }
 
 function mouseAction(evt, clickType) {
-    var mousePos = getMousePos(cvs, evt);
+    let mousePos = getMousePos(cvs, evt);
     for (let c = 0; c < gameGrid.gridWidth; c++) {
         for (let r = 0; r < gameGrid.gridWidth; r++) {
             let rX = gameGrid.arrayOfGridSquares[c][r].realX;
@@ -347,13 +346,14 @@ function setDifficulty(d) {
 }
 
 function getMousePos(canvas, evt) {
-    var rect = canvas.getBoundingClientRect();
+    let rect = canvas.getBoundingClientRect();
     return {
         x: evt.clientX - rect.left,
         y: evt.clientY - rect.top
     };
 }
 
+/*
 function drawStroked(text, x, y) {
     ctx.font = '80px Sans-serif';
     ctx.strokeStyle = 'black';
@@ -361,4 +361,4 @@ function drawStroked(text, x, y) {
     ctx.strokeText(text, x, y);
     ctx.fillStyle = 'white';
     ctx.fillText(text, x, y);
-}
+}*/
