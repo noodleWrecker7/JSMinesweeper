@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../css/minesweeper.css">
     <link rel="stylesheet" href="../../css/fontawesome.css">
     <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico"/>
+    <script src="../../hidden/render.js"></script>
     <!--Used from https://fontawesome.com under license https://fontawesome.com/license-->
     <title>Games - Minesweeper</title>
 
@@ -21,10 +22,10 @@
             <a href="../" class="nav-link nav-button">Projects</a>
             <a href="https://paypal.me/noodlewrecker" class="nav-link nav-button">Donate</a>
         </div>
-        <?php
-        $socialBarResponse = file_get_contents("../../../hidden/social-bar.html");
-        echo $socialBarResponse;
-        ?>
+        <div id="socialBar">
+            <script>insertSocialBar("../../hidden/social-bar.html");</script>
+
+        </div>
     </div>
 
     <h1 class="title">
@@ -56,4 +57,5 @@
     <script src="minesweeper.js"></script>
 </div>
 </body>
+
 </html>
